@@ -1,0 +1,47 @@
+<!-- form to add user query starts -->
+<div id="userquery">
+<div class="container">
+    <form 
+    [formGroup]="form" (ngSubmit)=" form.valid && onSubmit(form.value) " 
+    >
+    <div class="row">
+      <div class="col-25">
+        <label for="name">Enter your name</label>
+      </div>
+      <div class="col-75">
+        <input formControlName="name" type="text" id="name" name="name" placeholder="Enter your Name">
+      </div>
+    </div>
+    <div class="row">
+        <div class="col-25">
+          <label for="mobile">Mobile Number</label>
+        </div>
+        <div class="col-75">
+          <input type="number" formControlName="mobile" id="mobile" name="mobile" placeholder="Enter your mobile number">
+        </div>
+      </div>
+
+    <div class="row">
+      <div class="col-25">
+        <label for="subject">Query</label>
+      </div>
+      <div class="col-75">
+        <textarea formControlName="query" id="subject" name="query" placeholder="Enter your query" style="height:140px"></textarea>
+      </div>
+    </div>
+    <div class="row">
+      <input type="submit" value="Submit Query">
+    </div>
+    </form>
+      <!-- message showing query is raised -->
+    <div id="id01"  *ngIf="queryRaised">
+        <div >
+          <div >
+            <span onclick="document.getElementById('id01').style.display='none'" class="w3-button w3-display-topright">&times;</span>
+            <p>Query Raised Successfully</p>
+          </div>
+        </div>
+      </div>    
+  </div>
+</div>
+<!-- form to add a query ends -->

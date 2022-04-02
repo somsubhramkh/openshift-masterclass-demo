@@ -1,0 +1,82 @@
+
+
+<div id = "admin">
+  <div class="container">
+      <form 
+      [formGroup]="form" (ngSubmit)="form.valid && onSubmit(form.value)" 
+      >
+      <div class="row">
+        <div class="col-25">
+          <label for="fname">Fitness Program Code</label>
+        </div>
+        <div class="col-75">
+          <input formControlName="programCode" type="text"  name="code" placeholder="Enter Program Code">
+        </div>
+      </div>
+  
+      <div class="row">
+        <div class="col-25">
+          <label for="fname">Fitness Program Name</label>
+        </div>
+        <div class="col-75">
+          <input formControlName="programName" type="text" placeholder="Enter Program Name">
+        </div>
+      </div>
+      <div class="row">
+          <div class="col-25">
+            <label for="durationInMonths">Duration In Months</label>
+          </div>
+          <div class="col-75">
+            <input type="number" min="0" formControlName="durationInMonths"   placeholder="Enter duration in months">
+          </div>
+        </div>
+      <div class="row">
+        <div class="col-25">
+          <label for="price">Price</label>
+        </div>
+        <div class="col-75">
+          <input type="number" min="0" formControlName="price"  placeholder="Enter program price">
+        </div>
+      </div>
+      <div class="row">
+          <div class="col-25">
+            <label for="price">Discount Rate</label>
+          </div>
+          <div class="col-75">
+            <input type="number" min="0" id="discountrate" formControlName="discountRate"  placeholder="Enter discount rate">
+          </div>
+        </div>
+      <div class="row">
+        <div class="col-25">
+          <label for="activeStatus">Status</label>
+        </div>
+        <div class="col-75">
+          <select formControlName="isActive" name="status">
+            <option value="true">Active</option>
+            <option value="false">Inactive</option>
+          </select>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-25">
+          <label for="subject">Description</label>
+        </div>
+        <div class="col-75">
+          <textarea formControlName="description" id="subject" name="subject" placeholder="Enter Program Description" style="height:140px"></textarea>
+        </div>
+      </div>
+      <div class="row">
+        <input type="submit" value="Add Program">
+      </div>
+  
+      <div class="alert alert-warning" *ngIf="programAdded">
+        {{message}}
+      </div>
+      </form>
+  
+  
+  </div>
+  </div>
+  
+  
+  

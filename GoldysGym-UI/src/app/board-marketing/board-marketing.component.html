@@ -1,0 +1,26 @@
+<div id = "marketing">
+<div class="container">  
+    <div class="row" *ngFor="let query of content"  style="display: inline-flex;">
+      <div class="column">
+        <div class="card">
+          <img class="card-img-top" src="../../assets/img/gallery-many.jpeg" alt="program-img">
+          <div class="card-block">
+              <h4 class="card-title"> Name : {{query.name | uppercase }}</h4>
+              <div class="card-text">
+                    {{query.query}}          
+              </div>
+              <span> mail : {{query.email }}</span>
+          </div>
+          <div class="card-footer">
+                <span class="float-right"></span>
+              <span> mobile: {{query.mobile}} </span>
+          </div>
+          <!-- <input  [(ngModel)]="query.cseRemarks" type = "text" required>
+          <button (click) = closeQuery(query)> close query</button> -->
+      </div>
+      </div>
+    
+    </div>
+
+    </div>
+  </div>

@@ -1,0 +1,125 @@
+/* css for making entire register component appear below header */
+#signup{
+  padding-top: 4.5rem;
+}
+
+/* css for the entire register component */
+* {box-sizing: border-box}
+ input[type=email] ,input[type=password] {
+    width: 100%;
+    padding: 12px;
+    margin: 5px 0 10px 0;
+    display: inline-block;
+    border: none;
+    background: #f1f1f1;
+  }
+  
+  input[type=email]:focus,input[type=password]:focus {
+    background-color: #ddd;
+    outline: none;
+  }
+  
+  hr {
+    border: 1px solid #f1f1f1;
+    margin-bottom: 10px;
+  }
+  
+  /* Set a style for all buttons */
+  button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 26px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    opacity: 0.9;
+  }
+  
+  button:hover {
+    opacity:1;
+  }
+  
+  
+  /* Float  signup buttons and add an equal width */
+   .signupbtn {
+
+    width: 100%;
+  }
+  
+  /* Add padding to container elements */
+  .container {
+    padding: 14px;
+  }
+  
+  /* Clear floats */
+  .clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+  
+  /* Change styles for c signup button on extra small screens */
+  @media screen and (max-width: 300px) {
+     .signupbtn {
+       width: 100%;
+    }
+  }
+  @media screen and (max-width: 606px) {
+    #signup{
+      padding-top: 11.5rem;
+      padding-bottom: 5.5rem;
+    }
+ }
+
+  label {
+    display: block;
+    margin-top: 5px;
+  }
+  
+  .card-container.card {     
+    max-width: 400px !important;
+    padding: 28px 36px;
+    margin: auto;
+  }
+
+  .card {
+    background-color: #f7f7f7;
+    padding: 20px 25px 30px;
+    margin: 0 auto 15px;
+    margin-top: 5px;
+    border-radius: 2px;
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+  }
+  
+  .profile-img-card {
+    width: 66px;
+    height: 66px;
+    margin: 0 auto 10px;
+    display: block;
+    border-radius: 50%;
+  }
+
+.alert-danger{
+   color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+    font-size: 1rem;
+    /* font-weight: 400; */
+    line-height: 1.5;
+    color: #212529;
+    text-align: left;
+}
+
+.alert-warning {
+  color: #856404;
+  background-color: #fff3cd;
+  border-color: #ffeeba;
+}
+.alert {
+  position: relative;
+  padding: .75rem 1.25rem;
+  margin-bottom: 1rem;
+  border: 1px solid transparent;
+  border-radius: .25rem;
+}

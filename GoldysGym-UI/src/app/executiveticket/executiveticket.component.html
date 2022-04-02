@@ -1,0 +1,27 @@
+<div id = "marketing">
+    <div class="container">  
+        <div class="row" *ngFor="let ticket of content"  style="display: inline-flex;">
+          <div class="column">
+            <div class="card">
+              <img class="card-img-top" src="../../assets/img/gallery-many.jpeg" alt="program-img">
+              <div class="card-block">
+                  <h4 class="card-title"> Enquiry Code : {{ticket.enquiryCode }}</h4>
+                  <!-- <div class="card-text">
+                        {{ticket.ticket}}          
+                  </div> -->
+                  <span> Executive mail : {{ ticket.executiveEmail}}</span>
+              </div>
+              <div class="card-footer">
+                    <span class="float-right"></span>
+                  <span> Ticket Id: {{ticket.ticketId}} </span>
+              </div>
+              <input  [(ngModel)]="ticket.remarks" type = "text" required>
+              <button (click) = closeTicket(ticket)> close ticket</button>
+          </div>
+          </div>
+        
+        </div>
+    
+        </div>
+      </div>
+    

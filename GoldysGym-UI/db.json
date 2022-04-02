@@ -1,0 +1,252 @@
+{
+  "users": [
+    {
+      "email": "user@gmail.com",
+      "password": "user123",
+      "role": "user",
+      "id": 1
+    },
+    {
+      "email": "admin@gmail.com",
+      "password": "admin123",
+      "role": "admin",
+      "id": 2
+    },
+    {
+      "email": "marketing@gmail.com",
+      "password": "marketing123",
+      "role": "marketing",
+      "id": 3
+    },
+    {
+      "email": "user4@gmail.com",
+      "password": "user123",
+      "role": "user",
+      "id": 4
+    },
+    {
+      "email": "user3@gmail.com",
+      "password": "user123",
+      "role": "user",
+      "id": 5
+    },
+    {
+      "email": "user4@gmail.com",
+      "password": "123456",
+      "role": "user",
+      "id": 6
+    }
+  ],
+  "programs": [
+    {
+      "id": 1,
+      "programName": "Fitness Program1",
+      "description": "This is a fitness program1",
+      "durationInMonths": 6,
+      "price": 8000,
+      "discountRate": 10,
+      "currentPrice": 6400,
+      "isActive": true
+    },
+    {
+      "id": 2,
+      "programName": "Fitness Program2",
+      "description": "This is a fitness program2",
+      "durationInMonths": 6,
+      "price": 8000,
+      "discountRate": 10,
+      "currentPrice": 6400,
+      "isActive": true
+    },
+    {
+      "programName": "program4",
+      "description": "This is a 6 month fitness program.",
+      "durationInMonths": 6,
+      "price": 8000,
+      "discountRate": 12,
+      "currentPrice": 7040,
+      "isActive": "true",
+      "id": 4
+    },
+    {
+      "programName": "Program5",
+      "description": "This is a 15 months fitness program.",
+      "durationInMonths": 15,
+      "price": 18000,
+      "discountRate": 14,
+      "currentPrice": 15480,
+      "isActive": "true",
+      "id": 5
+    },
+    {
+      "programName": "program 6",
+      "description": "This is a 3 months fitness program.",
+      "durationInMonths": 3,
+      "price": 3000,
+      "discountRate": 5,
+      "currentPrice": 2850,
+      "isActive": "true",
+      "id": 6
+    }
+  ],
+  "enquiries": [
+    {
+      "name": "enquery1",
+      "email": "email1@gmail.com",
+      "mobile": "1234567890",
+      "query": "description of query",
+      "status": "inactive",
+      "cseRemarks": "This query is sloved",
+      "id": 1
+    },
+    {
+      "name": "User1",
+      "email": "user1@gmail.com",
+      "mobile": 1234567890,
+      "query": "i have query on 6 months program",
+      "status": "active",
+      "cseRemarks": "",
+      "id": 2
+    },
+    {
+      "name": "user2",
+      "email": "user2@gmail.com",
+      "mobile": 11234567890,
+      "query": "I have query on yearly program",
+      "status": "inactive",
+      "cseRemarks": "",
+      "id": 3
+    },
+    {
+      "name": "User4",
+      "email": "user4@gmail.com",
+      "mobile": 987654321,
+      "query": "I have query on 9 months program.",
+      "status": "active",
+      "cseRemarks": "",
+      "id": 4
+    },
+    {
+      "name": "user3",
+      "email": "user3@gmail.com",
+      "mobile": 9637465432,
+      "query": "I have query on yearly progrma.",
+      "status": "inactive",
+      "cseRemarks": "dfgsd",
+      "id": 5
+    },
+    {
+      "name": "User1",
+      "email": "user1@gmail.com",
+      "mobile": 1234567890,
+      "query": "I have query on program6",
+      "status": "active",
+      "cseRemarks": "",
+      "id": 6
+    },
+    {
+      "name": "User1",
+      "email": "user1@gmail.com",
+      "mobile": 987654321,
+      "query": "I have query on 6 months program.",
+      "status": "inactive",
+      "cseRemarks": "query solved",
+      "id": 7
+    },
+    {
+      "name": "program1",
+      "email": "user1@gmail.com",
+      "mobile": 1234567890,
+      "query": "This is a query on program1.",
+      "status": "active",
+      "cseRemarks": "",
+      "id": 8
+    },
+    {
+      "name": "User4",
+      "email": "user4@gmail.com",
+      "mobile": 1234567890,
+      "query": "I have query on yoga program.",
+      "status": "active",
+      "cseRemarks": "",
+      "id": 9
+    }
+  ],
+  "login": [
+    {
+      "email": "user1@gmail.com",
+      "password": "user123",
+      "id": 1
+    },
+    {
+      "email": "marketing@gmail.com",
+      "password": "marketing123",
+      "id": 2
+    },
+    {
+      "email": "admin@gmail.com",
+      "password": "admin123",
+      "id": 3
+    },
+    {
+      "email": "admin@gmail.com",
+      "password": "admin123",
+      "id": 4
+    },
+    {
+      "email": "marketing@gmail.com",
+      "password": "marketing123",
+      "id": 5
+    },
+    {
+      "email": "user1@gmail.com",
+      "password": "user123",
+      "id": 6
+    },
+    {
+      "email": "user4@gmail.com",
+      "password": "123456",
+      "id": 7
+    },
+    {
+      "email": "marketing@gmail.com",
+      "password": "marketing123",
+      "id": 8
+    },
+    {
+      "email": "admin@gmail.com",
+      "password": "admin123",
+      "id": 9
+    },
+    {
+      "email": "admin@gmail.com",
+      "password": "admin123",
+      "id": 10
+    },
+    {
+      "email": "marketing@gmail.com",
+      "password": "marketin123",
+      "id": 11
+    },
+    {
+      "email": "marketing@gmail.com",
+      "password": "marketing123",
+      "id": 12
+    },
+    {
+      "email": "admin@gmail.com",
+      "password": "admin123",
+      "id": 13
+    },
+    {
+      "email": "marketing@gmail.com",
+      "password": "marketing123",
+      "id": 14
+    },
+    {
+      "email": "admin@gmail.com",
+      "password": "admin123",
+      "id": 15
+    }
+  ]
+}

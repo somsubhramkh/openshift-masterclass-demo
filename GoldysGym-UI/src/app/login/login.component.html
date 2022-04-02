@@ -1,0 +1,62 @@
+<!-- login component starts -->
+
+<div id="login">
+  <div class="card card-container" *ngIf="!isLoggedIn">
+    <img
+      id="profile-img"
+      src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
+      class="profile-img-card"
+      alt="login-img"
+    />
+    <form
+      *ngIf="!isLoggedIn"
+      name="form"
+      (ngSubmit)="f.form.valid && onSubmit()"
+      #f="ngForm"
+      novalidate >
+      <div class="container">
+        <label for="email"><b>Email</b></label>
+        <input
+          type="email"
+          name="email"
+          [(ngModel)]="form.email"
+          required
+          placeholder="Enter Email"
+          email
+          #email="ngModel"
+        />
+        <div class="alert-danger" *ngIf="f.submitted && email.invalid">
+          <div *ngIf="email.errors.required">Email is required</div>
+          <div *ngIf="email.errors.email">
+            Email must be a valid email address
+          </div>
+        </div>
+        <label for="password"> <b>Password</b></label>
+        <input
+          type="password"
+          placeholder="Enter Password"
+          name="password"
+          [(ngModel)]="form.password"
+          required
+          minlength="6"
+          #password="ngModel"
+        />
+        <div
+          class="alert-danger"  *ngIf="f.submitted && password.invalid">
+          <div *ngIf="password.errors.required">Password is required</div>
+          <div *ngIf="password.errors.minlength">
+            Password must be at least 6 characters
+          </div>
+        </div>
+        <button class="btn btn-primary btn-block">
+          Login
+        </button>
+        <div class="alert alert-danger" role="alert" *ngIf="f.submitted && isLoginFailed">
+          Login failed : {{ errorMessage }}
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- login component ends -->

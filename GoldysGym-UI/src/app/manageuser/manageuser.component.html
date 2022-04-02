@@ -1,0 +1,25 @@
+<div class="container">
+    <div class="left">
+      <table>
+          <caption>Manage Users</caption>
+        <tr>
+          <th id="th-id">Email</th>
+          <th id="th-id"> Role</th>
+          <th id="th-id"> </th>
+        </tr>
+  
+        <tr *ngFor="let user of content ">
+          <td>{{user.email}}</td>
+          <!-- <td>{{person.mobile}}</td> -->
+          <td>
+          <select  name="role" [(ngModel)]="user.role">
+            <option value="user">User</option>
+            <option value="executive">Executive</option>
+            <option value="admin">Admin</option>
+          </select>
+        </td>
+        <td> <button (click) = updateUser(user) >update</button> </td>
+        </tr>
+      </table>
+    </div>
+  </div>

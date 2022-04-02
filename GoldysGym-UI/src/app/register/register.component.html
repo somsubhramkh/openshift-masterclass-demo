@@ -1,0 +1,82 @@
+<!--  register component html -->
+
+<div id="signup">
+  <div class="card card-container" *ngIf="!isSuccessful">
+    <img
+      id="profile-img"
+      src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
+      class="profile-img-card"
+      alt="register-img"
+    />
+    <form
+      *ngIf="!isSuccessful"
+      name="form"
+      (ngSubmit)="f.form.valid && onSubmit()"
+      #f="ngForm"
+      novalidate
+    >
+      <div class="container">
+        <label for="email"><b>Email</b></label>
+        <input
+          type="email"
+          name="email"
+          [(ngModel)]="form.email"
+          required
+          placeholder="Enter Email"
+          email
+          #email="ngModel"
+        />
+        <div class="alert-danger" *ngIf="f.submitted && email.invalid">
+          <div *ngIf="email.errors.required">Email is required</div>
+          <div *ngIf="email.errors.email">
+            Email must be a valid email address
+          </div>
+        </div>
+     
+        <label for="password"><b>Password</b></label>
+        <input
+          type="password"
+          name="password"
+          [(ngModel)]="form.password"
+          required
+          minlength="6"
+          placeholder="Enter Password"
+          #password="ngModel"
+        />
+        <div class="alert-danger" *ngIf="f.submitted && password.invalid">
+          <div *ngIf="password.errors.required">Password is required</div>
+          <div *ngIf="password.errors.minlength">
+            Password must be at least 6 characters
+          </div>
+        </div>
+        <label for="repeatpsw"><b>Reenter Password</b></label>
+        <input
+          type="password"
+          name="repeatpsw"
+          [(ngModel)]="form.repeatpsw"
+          required
+          minlength="6"
+          #repeatpsw="ngModel"
+          placeholder="Reenter Password"
+        />
+        <div class="alert-danger" *ngIf="f.submitted && repeatpsw.invalid">
+          <div *ngIf="repeatpsw.errors.required">Password is required</div>
+          <div *ngIf="repeatpsw.errors.minlength">
+            Password must be at least 6 characters
+          </div>
+        </div>
+        <button class="signupbtn">Sign Up</button>
+      </div>
+
+      <div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
+        Signup failed!<br/>{{ errorMessage }}
+      </div>
+
+    </form>
+  </div>
+</div>
+<div  *ngIf="!hideSuccessMessage" [ngStyle]="{float: center}" >
+  <div class="alert alert-success" [ngClass] ="FadeOutSuccessMsg()" *ngIf="isSuccessful">
+    Your registration is successful! Please login
+  </div>
+</div>

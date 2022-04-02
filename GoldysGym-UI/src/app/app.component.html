@@ -1,0 +1,47 @@
+<!-- header starts -->
+
+<div id="header">
+    <ul class="topnav" routerLinkActive="active">
+      <li>
+      <a href="/home" >Goldies Gym</a>
+    </li> 
+      <li  *ngIf="showAdminBoard">
+        <a href="/admin"  routerLink="admin">Add Program</a>
+      </li>
+      <li  *ngIf="showAdminBoard">
+        <a href="/manageprograms"  routerLink="manageprograms">Manage Programs</a>
+      </li>
+      <li  *ngIf="showAdminBoard">
+        <a href="/manageusers"  routerLink="manageusers">Manage Users</a>
+      </li>
+      <li  *ngIf="showMarketingBoard">
+        <a href="/mart"  routerLink="mart">All Queries</a>
+      </li>
+      <li  *ngIf="showMarketingBoard">
+        <a href="/tickets"  routerLink="tickets">Tickets</a>
+      </li>
+      <li *ngIf="showUserBoard">
+        <a href="/user" routerLink="user">All Programs</a>
+      </li>
+      <li *ngIf="showUserBoard">
+        <a href="/query" routerLink="query">Raise Query</a>
+      </li>
+      <li *ngIf="!isLoggedIn" class="right">
+        <a href="/register"  routerLink="register">Sign Up</a>
+      </li>
+      <li *ngIf="!isLoggedIn" class="right">
+        <a href="/login"  routerLink="login">Login</a>
+      </li>
+      <li  class="right" *ngIf="isLoggedIn">
+        <a href   (click)="logout()">LogOut</a>
+      </li>
+    </ul>
+  </div>
+  <!-- header ends -->
+
+<!-- Added router outlet to enable routing of all components -->
+  <router-outlet></router-outlet>
+
+<!-- Added footer compoent so that it is available across all the views -->
+  <app-footer></app-footer>
+

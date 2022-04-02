@@ -1,0 +1,24 @@
+<div id ="user">
+    <div class="container">  
+    <div class="row" *ngFor="let list_programs of content" style="display: inline-flex;">
+      <div class="column">
+        <div class="card">
+          <img class="card-img-top" src="../../assets/img/gallery-many.jpeg" alt="program-img">
+          <div class="card-block">
+              <h4 class="card-title">{{list_programs.programName |  uppercase}}</h4>
+              <div class="card-text">
+                    {{list_programs.description}}          
+              </div>
+              <span> only Rs {{list_programs.currentPrice}}</span>
+          </div>
+          <div class="card-footer">
+                <span class="float-right"> {{list_programs.discountRate}}% Off on </span>
+              <span>Rs {{list_programs.price}}</span>
+          </div>
+          <button (click) = deleteProgram(list_programs)>delete program</button>
+      </div>
+      </div>
+    </div>
+    </div>
+    </div>
+    
