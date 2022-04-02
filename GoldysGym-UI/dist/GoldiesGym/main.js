@@ -1821,13 +1821,21 @@ __webpack_require__.r(__webpack_exports__);
 
 var environment = {
     production: false,
-    // various APIs through API Gateway
-    AUTH_API: 'apigateway/userservice/api/v1/userservice',
-    AUTH_LOGIN_API: 'apigateway/userservice/api/v1/userservice/login',
-    ADMIN_API_URL: 'apigateway/gymservice/api/v1/gymservice',
-    USER_BOARD_API_URL: 'apigateway/gymservice/api/v1/gymservice',
-    USER_QUERY_API_URL: 'apigateway/enquiryservice/api/v1/enquiryservice',
-    USER_TICKET_API: 'apigateway/ticketservice/api/v1/ticketservice',
+    // // various APIs through API Gateway
+    // AUTH_API: 'apigateway/userservice/api/v1/userservice',
+    // AUTH_LOGIN_API: 'apigateway/userservice/api/v1/userservice/login',
+    // ADMIN_API_URL: 'apigateway/gymservice/api/v1/gymservice',
+    // USER_BOARD_API_URL: 'apigateway/gymservice/api/v1/gymservice',
+    // USER_QUERY_API_URL: 'apigateway/enquiryservice/api/v1/enquiryservice',
+    // USER_TICKET_API: 'apigateway/ticketservice/api/v1/ticketservice',
+
+        // various APIs without API gateway
+        AUTH_API: 'http://user-service-goldys-gym.apps-crc.testing/api/v1/userservice',
+        AUTH_LOGIN_API: 'http://user-service-goldys-gym.apps-crc.testing/api/v1/userservice/login',
+        ADMIN_API_URL: 'apigateway/gymservice/api/v1/gymservice',
+        USER_BOARD_API_URL: 'apigateway/gymservice/api/v1/gymservice',
+        USER_QUERY_API_URL: 'apigateway/enquiryservice/api/v1/enquiryservice',
+        USER_TICKET_API: 'apigateway/ticketservice/api/v1/ticketservice',
 };
 
 
