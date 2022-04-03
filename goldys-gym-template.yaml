@@ -1,0 +1,247 @@
+apiVersion: template.openshift.io/v1
+kind: Template
+labels:
+  app: goldys-gym
+  template: goldys-gym-persistent
+message: |-
+  The following service(s) have been created in your project: ${FRONTEND_NAME}, , ${REST_API_NAME}, ${DATABASE_SERVICE_NAME}.
+metadata:
+  name: goldys-gym-persistent
+  namespace: cgi-masterclass-demo
+objects:
+- apiVersion: v1
+  kind: Secret
+  metadata:
+    name: ${NAME}
+    labels:
+      app: ${NAME}
+  stringData:
+    mysql-password: ${MYSQL_PASSWORD}
+    mysql-user: ${MYSQL_USER}
+    mysql-database: ${MYSQL_DATABASE}
+    mysql-root-password: ${MYSQL_ROOT_PASSWORD}
+    mysql-url: jdbc:mysql://${DATABASE_SERVICE_NAME}:3306/${MYSQL_DATABASE}
+- kind: Service
+  apiVersion: v1
+  metadata:
+    name: ${FRONTEND_NAME}
+    namespace: ${NAMESPACE}
+    labels:
+      app: ${NAME}
+  spec:
+    ports:
+      - name: 8080-tcp
+        protocol: TCP
+        port: 8080
+        targetPort: 8080
+    selector:
+      deployment: ${FRONTEND_NAME}
+- kind: Service
+  apiVersion: v1
+  metadata:
+    name: ${REST_API_NAME}
+    namespace: ${NAMESPACE}
+    labels:
+      app: ${NAME}
+  spec:
+    ports:
+      - name: 8090-tcp
+        protocol: TCP
+        port: 8090
+        targetPort: 8090
+    selector:
+      deployment: ${REST_API_NAME}
+- kind: Service
+  apiVersion: v1
+  metadata:
+    name: mysql
+    namespace: ${NAMESPACE}
+    labels:
+      app: ${NAME}  
+  spec:
+    ports:
+      - name: 3306-tcp
+        protocol: TCP
+        port: 3306
+        targetPort: 3306
+    selector:
+      deployment: mysql
+- kind: Route
+  apiVersion: route.openshift.io/v1
+  metadata:
+    name: ${FRONTEND_NAME}
+    labels:
+      app: ${NAME}
+  spec:
+    host: goldys-gym.apps-crc.testing
+    to:
+      kind: Service
+      name: ${FRONTEND_NAME}
+- kind: Route
+  apiVersion: v1
+  metadata:
+    name: ${REST_API_NAME}
+    labels:
+      app: ${NAME}
+  spec:
+    host: user-service-goldys-gym.apps-crc.testing
+    to:
+      kind: Service
+      name: ${REST_API_NAME}
+- kind: Deployment
+  apiVersion: apps/v1
+  metadata:
+    name: ${REST_API_NAME}
+    namespace: ${NAMESPACE}
+    labels:
+      app: ${NAME}
+  spec:
+    replicas: 1
+    selector:
+      matchLabels:
+        deployment: ${REST_API_NAME}
+    template:
+      metadata:
+        labels:
+          deployment: ${REST_API_NAME}
+      spec:
+        containers:
+          - name: ${REST_API_NAME}
+            image: quay.io/somsubhramkh/user-service:1.0
+            ports:
+              - containerPort: 8090
+                protocol: TCP
+            env:
+            - name: MYSQL_URL
+              valueFrom:
+                secretKeyRef: 
+                  key: mysql-url
+                  name: ${NAME}
+            - name: MYSQL_PASSWORD
+              valueFrom:
+                secretKeyRef: 
+                  key: mysql-password
+                  name: ${NAME}
+            - name: MYSQL_ROOT_PASSWORD
+              valueFrom:
+                secretKeyRef: 
+                  key: mysql-root-password
+                  name: ${NAME}
+            - name: MYSQL_USER
+              valueFrom:
+                secretKeyRef: 
+                  key: mysql-user
+                  name: ${NAME}
+            imagePullPolicy: IfNotPresent
+        restartPolicy: Always
+- kind: Deployment
+  apiVersion: apps/v1
+  metadata:
+    name: ${FRONTEND_NAME}
+    namespace: ${NAMESPACE}
+    labels:
+      app: ${NAME}
+  spec:
+    replicas: 1
+    selector:
+      matchLabels:
+        deployment: ${FRONTEND_NAME}
+    template:
+      metadata:
+        labels:
+          deployment: ${FRONTEND_NAME}
+      spec:
+        containers:
+          - name: ${FRONTEND_NAME}
+            image: quay.io/somsubhramkh/goldys-gym-frontend:1.0
+            ports:
+              - containerPort: 8080
+                protocol: TCP
+            imagePullPolicy: IfNotPresent
+        restartPolicy: Always
+- kind: Deployment
+  apiVersion: apps/v1
+  metadata:
+    name: ${DATABASE_SERVICE_NAME}
+    namespace: ${NAMESPACE}
+    labels:
+      app: ${NAME}
+  spec:
+    replicas: 1
+    selector:
+      matchLabels:
+        deployment: ${DATABASE_SERVICE_NAME}
+    template:
+      metadata:
+        labels:
+          deployment: ${DATABASE_SERVICE_NAME}
+      spec:
+        containers:
+          - name: ${DATABASE_SERVICE_NAME}
+            image: registry.redhat.io/rhel8/mysql-80
+            ports:
+              - containerPort: 3306
+                protocol: TCP
+            env:
+            - name: MYSQL_DATABASE
+              valueFrom:
+                secretKeyRef: 
+                  key: mysql-database
+                  name: ${NAME}
+            - name: MYSQL_PASSWORD
+              valueFrom:
+                secretKeyRef: 
+                  key: mysql-password
+                  name: ${NAME}
+            - name: MYSQL_ROOT_PASSWORD
+              valueFrom:
+                secretKeyRef: 
+                  key: mysql-root-password
+                  name: ${NAME}
+            - name: MYSQL_USER
+              valueFrom:
+                secretKeyRef: 
+                  key: mysql-user
+                  name: ${NAME}
+            imagePullPolicy: IfNotPresent
+parameters:
+- description: The name assigned to all of the objects defined in this template.
+  displayName: App Name
+  name: NAME
+  required: true
+  value: 'goldys-gym'
+- description: The name assigned to all of the frontend objects defined in this template.
+  displayName: Frontend App Name
+  name: FRONTEND_NAME
+  required: true
+  value: 'goldys-gym-frontend'
+- description: The name assigned to the REST API for User Registration and Authentication
+  displayName: REST API Name
+  name: REST_API_NAME
+  required: true
+  value: 'user-service'
+- displayName: Database Service Name
+  name: DATABASE_SERVICE_NAME
+  required: true
+  value: mysql
+- displayName: Database Name
+  name: MYSQL_DATABASE
+  required: true
+  value: userdb
+- displayName: Database Password
+  name: MYSQL_PASSWORD
+  required: true
+  value: password
+- displayName: Database Root Password
+  name: MYSQL_ROOT_PASSWORD
+  required: true
+  value: password
+- displayName: Database User
+  name: MYSQL_USER
+  required: true
+  value: developer
+- description: The OpenShift Namespace where the Objects reside.
+  displayName: Namespace
+  name: NAMESPACE
+  required: true
+  value: 'cgi-masterclass-demo'
